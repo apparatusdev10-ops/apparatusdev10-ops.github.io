@@ -72,15 +72,55 @@ header p {
   color: #1565c0;
 }
 
-.mockup {
-  text-align: center;
-  margin-top: 50px;
+/* Screenshot Gallery */
+.gallery {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 20px 0;
+  scroll-behavior: smooth;
 }
 
-.mockup img {
-  width: 260px;
-  border-radius: 30px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+.gallery img {
+  height: 450px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-height: 85%;
+  border-radius: 20px;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 footer {
@@ -108,7 +148,7 @@ footer {
 
   <div class="features">
     <div class="card">
-      <h3>400+ Practice Questions</h3>
+      <h3>500+ Practice Questions</h3>
       <p>Realistic questions based on the official Ontario Driver’s Handbook.</p>
     </div>
 
@@ -127,12 +167,26 @@ footer {
       <p>Visual stats to help you see your strengths and weaknesses.</p>
     </div>
   </div>
+</section>
 
-  <div class="mockup">
-    <h2>Designed for Future Drivers</h2>
-    <img src="https://raw.githubusercontent.com/apparatusdev10-ops/apparatusdev10-ops.github.io/refs/heads/main/Pass%20Your%20Ontario%20G1%20Test%20with%20Confidence.png" alt="App Screenshot">
+<section class="section">
+  <h2 style="text-align:center;">App Screenshots</h2>
+  <div class="gallery">
+    <img src="7.png" onclick="openModal(this.src)" alt="Screenshot 1">
+    <img src="1.png" onclick="openModal(this.src)" alt="Screenshot 2">
+    <img src="2.png" onclick="openModal(this.src)" alt="Screenshot 3">
+    <img src="3.png" onclick="openModal(this.src)" alt="Screenshot 4">
+    <img src="4.png" onclick="openModal(this.src)" alt="Screenshot 5">
+    <img src="5.png" onclick="openModal(this.src)" alt="Screenshot 6">
+    <img src="6.png" onclick="openModal(this.src)" alt="Screenshot 7">
   </div>
 </section>
+
+<!-- Modal -->
+<div id="modal" class="modal" onclick="closeModal()">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="modal-img">
+</div>
 
 <section class="section" style="text-align:center;">
   <h2>Contact</h2>
@@ -142,6 +196,17 @@ footer {
 <footer>
   © 2026 Apparatus.dev All rights reserved.
 </footer>
+
+<script>
+function openModal(src) {
+  document.getElementById("modal").style.display = "block";
+  document.getElementById("modal-img").src = src;
+}
+
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+}
+</script>
 
 </body>
 </html>
