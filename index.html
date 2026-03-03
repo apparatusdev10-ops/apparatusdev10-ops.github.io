@@ -1,214 +1,318 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>G1 Practice Test Ontario</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>G1 Practice Test – Pass Your Ontario G1 Exam</title>
+  <meta name="description" content="Study smarter for your Ontario G1 written driving test. Hundreds of practice questions, detailed explanations, and real exam simulations."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/png" href="images/icon.png"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    /* Real icon in nav */
+    .nav-logo .logo-icon img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
+    .nav-logo .logo-icon { overflow: hidden; padding: 0; }
 
-<style>
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: #f9fafc;
-  color: #1a1a1a;
-}
+    /* Hero visual with real screenshot */
+    .hero-visual { display: flex; justify-content: center; align-items: center; position: relative; }
 
-header {
-  background: linear-gradient(135deg, #1e88e5, #1565c0);
-  color: white;
-  padding: 80px 20px;
-  text-align: center;
-}
+    .phone-mockup {
+      width: 255px;
+      height: 560px;
+      background: #1a1a1a;
+      border-radius: 44px;
+      position: relative;
+      box-shadow:
+        0 0 0 2px #3a3a3a,
+        0 0 0 5px #111,
+        0 0 0 7px #2e2e2e,
+        0 30px 80px rgba(13,27,62,0.35),
+        0 8px 24px rgba(0,0,0,0.4);
+    }
 
-header h1 {
-  font-size: 42px;
-  margin-bottom: 10px;
-}
+    .phone-mockup::before {
+      content: '';
+      position: absolute;
+      inset: 4px;
+      background: #000;
+      border-radius: 40px;
+      z-index: 0;
+    }
 
-header p {
-  font-size: 18px;
-  opacity: 0.9;
-}
+    .phone-mockup::after {
+      content: '';
+      position: absolute;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 5px;
+      background: #1a1a1a;
+      border-radius: 20px;
+      z-index: 10;
+      box-shadow: 0 0 0 1px #2e2e2e;
+    }
 
-.button {
-  display: inline-block;
-  margin-top: 25px;
-  padding: 14px 28px;
-  background: white;
-  color: #1565c0;
-  text-decoration: none;
-  font-weight: 600;
-  border-radius: 8px;
-  transition: 0.3s;
-}
+    .phone-mockup .btn-vol-up,
+    .phone-mockup .btn-vol-down,
+    .phone-mockup .btn-power {
+      position: absolute;
+      background: #2e2e2e;
+      border-radius: 3px;
+    }
+    .phone-mockup .btn-vol-up  { left: -4px; top: 100px; width: 4px; height: 32px; }
+    .phone-mockup .btn-vol-down{ left: -4px; top: 144px; width: 4px; height: 32px; }
+    .phone-mockup .btn-power   { right: -4px; top: 120px; width: 4px; height: 50px; }
 
-.button:hover {
-  background: #f0f0f0;
-}
+    .phone-screen-img {
+      position: absolute;
+      inset: 4px;
+      width: calc(100% - 8px);
+      height: calc(100% - 8px);
+      object-fit: contain;
+      object-position: top;
+      border-radius: 40px;
+      z-index: 1;
+      background: #fff;
+    }
 
-.section {
-  padding: 70px 20px;
-  max-width: 1100px;
-  margin: auto;
-}
-
-.features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  margin-top: 40px;
-}
-
-.card {
-  background: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-}
-
-.card h3 {
-  margin-top: 0;
-  color: #1565c0;
-}
-
-/* Screenshot Gallery */
-.gallery {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  padding: 20px 0;
-  scroll-behavior: smooth;
-  margin-bottom: 50px;
-}
-
-.gallery img {
-  height: 300px; /* smaller screenshots */
-  border-radius: 20px;
-  cursor: pointer;
-  transition: 0.3s;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-
-.gallery img:hover {
-  transform: scale(1.05);
-}
-
-/* Modal */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  padding-top: 60px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.9);
-}
-
-.modal-content {
-  margin: auto;
-  display: block;
-  max-height: 85%;
-  border-radius: 20px;
-}
-
-.close {
-  position: absolute;
-  top: 20px;
-  right: 40px;
-  color: white;
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-footer {
-  background: #111;
-  color: #aaa;
-  text-align: center;
-  padding: 30px 20px;
-  font-size: 14px;
-}
-</style>
+    /* Floating cards repositioned to top of phone */
+    .floating-card.c1 { top: 60px; right: 20px; bottom: auto; z-index: 100; position: absolute; }
+    .floating-card.c2 { bottom: 40px; left: 20px; top: auto; z-index: 100; position: absolute; }
+    .hero-visual { position: relative; z-index: 1; }
+    .phone-mockup { position: relative; z-index: 1; }
+    .screenshots-section { padding: 90px 0; background: var(--bg-light); }
+    .screenshots-header { text-align: center; margin-bottom: 50px; }
+    .screenshots-scroll { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; align-items: start; }
+    .screenshot-item { border-radius: 20px; overflow: hidden; box-shadow: 0 12px 40px rgba(13,27,62,0.15); transition: transform 0.25s ease, box-shadow 0.25s ease; }
+    .screenshot-item:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 24px 56px rgba(26,111,212,0.2); }
+    .screenshot-item img { width: 100%; height: auto; display: block; }
+    @media (max-width: 900px) { .screenshots-scroll { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 500px) { .screenshots-scroll { grid-template-columns: repeat(2, 1fr); gap: 12px; } }
+  </style>
 </head>
-
 <body>
 
+<!-- HEADER -->
 <header>
-  <h1>G1 Practice Test Ontario</h1>
-  <p>Pass your Ontario G1 test with confidence and ease</p>
-  <a class="button" href="https://play.google.com/store/apps/details?id=com.g1practicetestontario.app">
-    Download on Google Play
-  </a>
+  <div class="container">
+    <nav>
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon">
+          <img src="images/icon.png" alt="G1 Practice Test Icon"/>
+        </div>
+        G1 Practice Test
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="https://play.google.com/store/apps/details?id=com.g1practicetestontario.app" class="btn btn-primary" target="_blank"> Get the App</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
 </header>
 
-<!-- Screenshots on top -->
-<section class="section">
-  <h2 style="text-align:center;">App Screenshots</h2>
-  <div class="gallery">
-    <img src="7.png" onclick="openModal(this.src)" alt="Screenshot 1">
-    <img src="1.png" onclick="openModal(this.src)" alt="Screenshot 2">
-    <img src="2.png" onclick="openModal(this.src)" alt="Screenshot 3">
-    <img src="3.png" onclick="openModal(this.src)" alt="Screenshot 4">
-    <img src="4.png" onclick="openModal(this.src)" alt="Screenshot 5">
-    <img src="5.png" onclick="openModal(this.src)" alt="Screenshot 6">
-    <img src="6.png" onclick="openModal(this.src)" alt="Screenshot 7">
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <span class="badge badge-soft">🇨🇦 Ontario Driving Test</span>
+        <h1>Pass Your <span>G1 Test</span><br/>First Try</h1>
+        <p>Prepare for the Ontario G1 knowledge test with realistic practice questions, road signs, mock tests, and progress tracking — based on the official Ontario Driver's Handbook.</p>
+        <div class="hero-actions">
+          <a href="https://play.google.com/store/apps/details?id=com.g1practicetestontario.app" class="btn btn-primary" target="_blank">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M3.18 23.76a1.5 1.5 0 0 0 1.74-.13l12.44-8.24-2.93-2.93-11.25 11.3zm-1.7-20.3v17.08a1.5 1.5 0 0 0 .87 1.36l10.14-10.12L2.35 1.1a1.5 1.5 0 0 0-.87 2.36zm19.12 8.23L17.5 9.1 14.25 12l3.25 3.2 3.1-1.83a1.5 1.5 0 0 0 0-2.68zM4.92.37L17.5 8.9l-3.25 3.1L4.12.5A1.5 1.5 0 0 1 4.92.37z"/></svg>
+            Download Free
+          </a>
+          <a href="about.html" class="btn btn-outline">Learn More</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <strong>500+</strong>
+            <span>Practice Questions</span>
+          </div>
+          <div class="stat-item">
+            <strong>200+</strong>
+            <span>Mock Test Questions</span>
+          </div>
+          <div class="stat-item">
+            <strong>400+</strong>
+            <span>Real Road Signs</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="phone-mockup">
+          <div class="btn-vol-up"></div>
+          <div class="btn-vol-down"></div>
+          <div class="btn-power"></div>
+          <img src="images/001.jpg" alt="G1 Practice Test App" class="phone-screen-img"/>
+        </div>
+        <div class="floating-card c1">
+          <div class="fc-icon">✅</div>
+          <div>
+            <strong>Question 24/40</strong>
+            <span>Correct!</span>
+          </div>
+        </div>
+        <div class="floating-card c2">
+          <div class="fc-icon">📊</div>
+          <div>
+            <strong>Score: 92%</strong>
+            <span>Ready to pass!</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
+<!-- FEATURES -->
 <section class="section">
-  <h2 style="text-align:center;">Everything You Need to Pass</h2>
-
-  <div class="features">
-    <div class="card">
-      <h3>400+ Practice Questions</h3>
-      <p>Realistic questions based on the official Ontario Driver’s Handbook.</p>
+  <div class="container">
+    <div class="section-header">
+      <span class="badge">Features</span>
+      <h2>Everything You Need to Succeed</h2>
+      <p>Built specifically for the Ontario G1 knowledge test, based on the official Ontario Driver's Handbook published by the Government of Ontario.</p>
     </div>
-
-    <div class="card">
-      <h3>Road Sign Flashcards</h3>
-      <p>Master all Ontario road signs with simple and effective flashcards.</p>
-    </div>
-
-    <div class="card">
-      <h3>Mock Exams</h3>
-      <p>Simulate the real G1 test and track your improvement over time.</p>
-    </div>
-
-    <div class="card">
-      <h3>Progress Tracking</h3>
-      <p>Visual stats to help you see your strengths and weaknesses.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📝</div>
+        <h3>Realistic Practice Questions</h3>
+        <p>Practice with questions modeled after the actual MTO G1 written test, covering all official topics from the Ontario Driver's Handbook.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Progress Tracking</h3>
+        <p>Track your progress across all topics. Identify weak areas and focus your study sessions where it counts.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🚦</div>
+        <h3>Road Signs with Explanations</h3>
+        <p>Learn all Ontario road signs with detailed explanations — regulatory, warning, and informational signs all included.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <h3>Realistic Mock Tests</h3>
+        <p>Take full-length mock tests under real exam conditions — 40 questions, just like the actual G1 format.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📖</div>
+        <h3>All G1 Topics Covered</h3>
+        <p>Study all G1 topics based on the official Ontario Driver's Handbook published by the Government of Ontario.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌙</div>
+        <h3>Dark Mode & Reminders</h3>
+        <p>Study comfortably day or night with full dark mode support. Set daily reminders to stay on track with your prep.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📅</div>
+        <h3>Set Your Exam Date</h3>
+        <p>Enter your G1 exam date and the app will count down the days, helping you stay focused and prepared in time.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Modal -->
-<div id="modal" class="modal" onclick="closeModal()">
-  <span class="close">&times;</span>
-  <img class="modal-content" id="modal-img">
-</div>
-
-<section class="section" style="text-align:center;">
-  <h2>Contact</h2>
-  <p>Email: apparatus.dev.1.0@gmail.com</p>
+<!-- APP SCREENSHOTS -->
+<section class="screenshots-section">
+  <div class="container">
+    <div class="screenshots-header">
+      <span class="badge">App Preview</span>
+      <h2>See It in Action</h2>
+      <p>A clean, intuitive experience designed to help you pass the first time.</p>
+    </div>
+    <div class="screenshots-scroll">
+      <div class="screenshot-item">
+        <img src="images/07.png" alt="G1 Practice Test – Mock Tests"/>
+      </div>
+      <div class="screenshot-item">
+        <img src="images/03.png" alt="G1 Practice Test – Road Signs"/>
+      </div>
+      <div class="screenshot-item">
+        <img src="images/04.png" alt="G1 Practice Test – Flashcards"/>
+      </div>
+      <div class="screenshot-item">
+        <img src="images/06.png" alt="G1 Practice Test – Progress Tracking"/>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- DOWNLOAD CTA -->
+<section class="download-section">
+  <div class="container">
+    <h2>Ready to Pass Your G1?</h2>
+    <p>Download free on the Google Play Store and start practicing today. Based on the official Ontario Driver's Handbook.</p>
+    <a href="https://play.google.com/store/apps/details?id=com.g1practicetestontario.app" class="gp-btn" target="_blank">
+      <svg class="gp-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l242-242L47 0zm425.6 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c17.1-9.8 17.1-36.1-.8-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z" fill="#fff"/></svg>
+      <div class="gp-text">
+        <small>GET IT ON</small>
+        <strong>Google Play</strong>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- DISCLAIMER -->
+<section class="section section-light">
+  <div class="container">
+    <div class="section-header">
+      <span class="badge">Disclaimer & Source</span>
+      <h2>Independent Educational App</h2>
+      <p>G1 Practice Test Ontario is an independent educational app created to help users prepare for the Ontario G1 knowledge test. This app is not affiliated with, endorsed by, or representing any government entity or agency.</p>
+      <p style="margin-top:16px;">The study content and road rules are based on the <strong>official Ontario Driver's Handbook</strong> published by the Government of Ontario. <a href="https://www.ontario.ca/document/official-mto-drivers-handbook" target="_blank" style="color:var(--primary);">View the official source →</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-  © 2026 Apparatus.dev All rights reserved.
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo" style="color:white;">
+          <div class="logo-icon" style="overflow:hidden;padding:0;">
+            <img src="images/icon.png" alt="G1 Icon" style="width:100%;height:100%;object-fit:cover;border-radius:10px;"/>
+          </div>
+          G1 Practice Test
+        </div>
+        <p>Helping Ontario drivers pass their G1 knowledge test with confidence since 2024.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="contact.html">Support</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Apparatus.dev. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
 </footer>
 
-<script>
-function openModal(src) {
-  document.getElementById("modal").style.display = "block";
-  document.getElementById("modal-img").src = src;
-}
-
-function closeModal() {
-  document.getElementById("modal").style.display = "none";
-}
-</script>
-
+<script src="js/main.js"></script>
 </body>
 </html>
