@@ -10,86 +10,67 @@
   <link rel="icon" type="image/png" href="images/icon.png"/>
   <link rel="stylesheet" href="css/style.css"/>
   <style>
-    /* Real icon in nav */
     .nav-logo .logo-icon img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
     .nav-logo .logo-icon { overflow: hidden; padding: 0; }
-
-    /* Hero visual with real screenshot */
     .hero-visual { display: flex; justify-content: center; align-items: center; position: relative; }
-
     .phone-mockup {
-      width: 255px;
-      height: 560px;
-      background: #1a1a1a;
-      border-radius: 44px;
-      position: relative;
-      box-shadow:
-        0 0 0 2px #3a3a3a,
-        0 0 0 5px #111,
-        0 0 0 7px #2e2e2e,
-        0 30px 80px rgba(13,27,62,0.35),
-        0 8px 24px rgba(0,0,0,0.4);
+      width: 255px; height: 500px; background: #1a1a1a; border-radius: 44px; position: relative;
+      box-shadow: 0 0 0 2px #3a3a3a, 0 0 0 5px #111, 0 0 0 7px #2e2e2e, 0 30px 80px rgba(13,27,62,0.35), 0 8px 24px rgba(0,0,0,0.4);
     }
-
-    .phone-mockup::before {
-      content: '';
-      position: absolute;
-      inset: 4px;
-      background: #000;
-      border-radius: 40px;
-      z-index: 0;
-    }
-
+    .phone-mockup::before { content: ''; position: absolute; inset: 4px; background: #000; border-radius: 40px; z-index: 0; }
     .phone-mockup::after {
-      content: '';
-      position: absolute;
-      top: 16px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 5px;
-      background: #1a1a1a;
-      border-radius: 20px;
-      z-index: 10;
+      content: ''; position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+      width: 80px; height: 5px; background: #1a1a1a; border-radius: 20px; z-index: 10;
       box-shadow: 0 0 0 1px #2e2e2e;
     }
-
-    .phone-mockup .btn-vol-up,
-    .phone-mockup .btn-vol-down,
-    .phone-mockup .btn-power {
-      position: absolute;
-      background: #2e2e2e;
-      border-radius: 3px;
-    }
+    .phone-mockup .btn-vol-up, .phone-mockup .btn-vol-down, .phone-mockup .btn-power { position: absolute; background: #2e2e2e; border-radius: 3px; }
     .phone-mockup .btn-vol-up  { left: -4px; top: 100px; width: 4px; height: 32px; }
     .phone-mockup .btn-vol-down{ left: -4px; top: 144px; width: 4px; height: 32px; }
     .phone-mockup .btn-power   { right: -4px; top: 120px; width: 4px; height: 50px; }
-
     .phone-screen-img {
-      position: absolute;
-      inset: 4px;
-      width: calc(100% - 8px);
-      height: calc(100% - 8px);
-      object-fit: contain;
-      object-position: top;
-      border-radius: 40px;
-      z-index: 1;
-      background: #fff;
+      position: absolute; inset: 4px; width: calc(100% - 8px); height: calc(100% - 8px);
+      object-fit: contain; object-position: top; border-radius: 40px; z-index: 1; background: #fff;
     }
-
-    /* Floating cards repositioned to top of phone */
     .floating-card.c1 { top: 60px; right: 20px; bottom: auto; z-index: 100; position: absolute; }
     .floating-card.c2 { bottom: 40px; left: 20px; top: auto; z-index: 100; position: absolute; }
     .hero-visual { position: relative; z-index: 1; }
     .phone-mockup { position: relative; z-index: 1; }
+
+    /* SCREENSHOTS SECTION */
     .screenshots-section { padding: 90px 0; background: var(--bg-light); }
     .screenshots-header { text-align: center; margin-bottom: 50px; }
-    .screenshots-scroll { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; align-items: start; }
-    .screenshot-item { border-radius: 20px; overflow: hidden; box-shadow: 0 12px 40px rgba(13,27,62,0.15); transition: transform 0.25s ease, box-shadow 0.25s ease; }
-    .screenshot-item:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 24px 56px rgba(26,111,212,0.2); }
-    .screenshot-item img { width: 100%; height: auto; display: block; }
-    @media (max-width: 900px) { .screenshots-scroll { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 500px) { .screenshots-scroll { grid-template-columns: repeat(2, 1fr); gap: 12px; } }
+
+    /* CAROUSEL */
+    .carousel-wrapper { position: relative; display: flex; align-items: center; gap: 16px; }
+    .carousel-track {
+      display: flex; gap: 20px; overflow-x: auto; scroll-behavior: smooth;
+      scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+      padding: 16px 4px 20px; scrollbar-width: none; -ms-overflow-style: none;
+    }
+    .carousel-track::-webkit-scrollbar { display: none; }
+    .carousel-item {
+      flex: 0 0 220px; scroll-snap-align: start; border-radius: 22px; overflow: hidden;
+      box-shadow: 0 12px 40px rgba(13,27,62,0.15);
+      transition: transform 0.25s ease, box-shadow 0.25s ease; background: #fff;
+    }
+    .carousel-item:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 24px 56px rgba(26,111,212,0.22); }
+    .carousel-item img { width: 100%; height: auto; display: block; }
+    .carousel-btn {
+      flex-shrink: 0; width: 46px; height: 46px; border-radius: 50%;
+      border: 2px solid #D0DEEF; background: #fff; color: #1A6FD4; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(26,111,212,0.12); transition: all 0.2s ease; z-index: 2;
+    }
+    .carousel-btn:hover { background: #1A6FD4; color: #fff; border-color: #1A6FD4; box-shadow: 0 6px 20px rgba(26,111,212,0.35); transform: scale(1.08); }
+    .carousel-btn:disabled { opacity: 0.35; cursor: default; transform: none; }
+    .carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 20px; }
+    .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: #D0DEEF; border: none; cursor: pointer; transition: all 0.2s ease; padding: 0; }
+    .carousel-dot.active { background: #1A6FD4; width: 24px; border-radius: 4px; }
+
+    @media (max-width: 640px) {
+      .carousel-btn { width: 38px; height: 38px; }
+      .carousel-item { flex: 0 0 160px; }
+    }
   </style>
 </head>
 <body>
@@ -108,7 +89,7 @@
         <li><a href="index.html" class="active">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
-        <li><a href="https://play.google.com/store/apps/details?id=com.g1practicetestontario.app" class="btn btn-primary" target="_blank"> Get the App</a></li>
+        <li><a href="https://play.google.com/store/apps/details?id=com.g1practicetestontario.app" class="btn btn-primary" target="_blank">Get the App</a></li>
       </ul>
       <button class="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -152,12 +133,12 @@
           <div class="btn-vol-up"></div>
           <div class="btn-vol-down"></div>
           <div class="btn-power"></div>
-          <img src="images/001.jpg" alt="G1 Practice Test App" class="phone-screen-img"/>
+          <img src="images/8.png" alt="G1 Practice Test App" class="phone-screen-img"/>
         </div>
         <div class="floating-card c1">
           <div class="fc-icon">✅</div>
           <div>
-            <strong>Question 32/40</strong>
+            <strong>Question 24/40</strong>
             <span>Correct!</span>
           </div>
         </div>
@@ -217,6 +198,16 @@
         <h3>Set Your Exam Date</h3>
         <p>Enter your G1 exam date and the app will count down the days, helping you stay focused and prepared in time.</p>
       </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔁</div>
+        <h3>Questions & Signs Review</h3>
+        <p>Review questions and road signs you got wrong or flagged for later — so you can focus on exactly what needs more practice before your exam.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🆓</div>
+        <h3>100% Free — No Subscriptions</h3>
+        <p>Every feature is completely free. No paywalls, no subscriptions, no hidden fees. Just download and start studying right away.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -229,20 +220,28 @@
       <h2>See It in Action</h2>
       <p>A clean, intuitive experience designed to help you pass the first time.</p>
     </div>
-    <div class="screenshots-scroll">
-      <div class="screenshot-item">
-        <img src="images/07.png" alt="G1 Practice Test – Mock Tests"/>
+
+    <div class="carousel-wrapper">
+      <button class="carousel-btn" id="carouselPrev" aria-label="Previous">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+
+      <div class="carousel-track" id="carouselTrack">
+        <div class="carousel-item"><img src="images/HOOK-SCREEN-PASS-YOUR-G1-TEST.png" alt="G1 Practice Test – Home"/></div>
+        <div class="carousel-item"><img src="images/SIGNS-SCREEN.png" alt="G1 Practice Test – Road Signs"/></div>
+        <div class="carousel-item"><img src="images/STUDY-SCREEN.png" alt="G1 Practice Test – Study"/></div>
+        <div class="carousel-item"><img src="images/MOCK-TEST-SCREEN.png" alt="G1 Practice Test – Mock Test"/></div>
+        <div class="carousel-item"><img src="images/PROGRESS-SCREEN.png" alt="G1 Practice Test – Progress"/></div>
+        <div class="carousel-item"><img src="images/SMART-FEATURES-SCREEN.png" alt="G1 Practice Test – Smart Features"/></div>
+        <div class="carousel-item"><img src="images/FREE-SCREEN.png" alt="G1 Practice Test – Free Learning"/></div>
       </div>
-      <div class="screenshot-item">
-        <img src="images/03.png" alt="G1 Practice Test – Road Signs"/>
-      </div>
-      <div class="screenshot-item">
-        <img src="images/04.png" alt="G1 Practice Test – Flashcards"/>
-      </div>
-      <div class="screenshot-item">
-        <img src="images/06.png" alt="G1 Practice Test – Progress Tracking"/>
-      </div>
+
+      <button class="carousel-btn" id="carouselNext" aria-label="Next">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
     </div>
+
+    <div class="carousel-dots" id="carouselDots"></div>
   </div>
 </section>
 
@@ -252,7 +251,7 @@
     <h2>Ready to Pass Your G1?</h2>
     <p>Download free on the Google Play Store and start practicing today. Based on the official Ontario Driver's Handbook.</p>
     <a href="https://play.google.com/store/apps/details?id=com.g1practicetestontario.app" class="gp-btn" target="_blank">
-      <svg class="gp-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l242-242L47 0zm425.6 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c17.1-9.8 17.1-36.1-.8-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z" fill="#fff"/></svg>
+      <svg class="gp-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" width="30" height="30"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l242-242L47 0zm425.6 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c17.1-9.8 17.1-36.1-.8-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z" fill="#fff"/></svg>
       <div class="gp-text">
         <small>GET IT ON</small>
         <strong>Google Play</strong>
@@ -314,5 +313,56 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script>
+  (function () {
+    const track   = document.getElementById('carouselTrack');
+    const prevBtn = document.getElementById('carouselPrev');
+    const nextBtn = document.getElementById('carouselNext');
+    const dotsWrap = document.getElementById('carouselDots');
+    if (!track) return;
+
+    const items = Array.from(track.querySelectorAll('.carousel-item'));
+    const total = items.length;   // 7
+    const visible = 4;
+    const dotCount = total - visible + 1;  // 4 dots
+    let idx = 0;
+
+    /* ── Build 4 dots ── */
+    dotsWrap.innerHTML = '';
+    for (let i = 0; i < dotCount; i++) {
+      const d = document.createElement('button');
+      d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      d.addEventListener('click', () => go(i));
+      dotsWrap.appendChild(d);
+    }
+
+    function getDots() {
+      return Array.from(dotsWrap.querySelectorAll('.carousel-dot'));
+    }
+
+    function refresh() {
+      getDots().forEach((d, i) => d.classList.toggle('active', i === idx));
+      prevBtn.disabled = idx === 0;
+      nextBtn.disabled = idx === dotCount - 1;
+    }
+
+    function go(i) {
+      idx = Math.max(0, Math.min(dotCount - 1, i));
+      const itemWidth = items[0].offsetWidth + 20; // width + gap
+      if (idx === dotCount - 1) {
+        // last position: scroll to absolute end
+        track.scrollLeft = track.scrollWidth - track.clientWidth;
+      } else {
+        track.scrollLeft = idx * itemWidth;
+      }
+      refresh();
+    }
+
+    prevBtn.addEventListener('click', () => go(idx - 1));
+    nextBtn.addEventListener('click', () => go(idx + 1));
+
+    refresh();
+  })();
+</script>
 </body>
 </html>
