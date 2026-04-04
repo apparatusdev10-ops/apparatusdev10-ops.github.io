@@ -1,1 +1,1 @@
-# apparatusdev10-ops.github.io/apparatus/
+# apparatusdev10-ops.github.io/Apparatus/
